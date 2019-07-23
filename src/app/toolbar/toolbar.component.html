@@ -1,0 +1,44 @@
+<div class="toolbar navbar navbar-dark bg-dark">
+  <div class="col">
+    <span class="toolbar__label navbar-text mr-3">Добавить:</span>
+    <div
+      class="btn-group btn-group-sm"
+      role="group"
+      aria-label="Базовые элементы"
+    >
+      <button
+        class="btn btn-primary toolbar__item toolbar__item--start"
+        (click)="addStartEvent()"
+      >StartEvent</button>
+      <button
+        class="btn btn-primary toolbar__item toolbar__item--task"
+        (click)="addTask()"
+      >Task</button>
+      <button
+        class="btn btn-primary toolbar__item toolbar__item--gateway"
+        (click)="addGateway()"
+      >Gateway</button>
+      <button
+        class="btn btn-primary toolbar__item toolbar__item--end"
+        (click)="addEndEvent()"
+      >EndEvent</button>
+    </div>
+  </div>
+  <div class="col">
+    <span class="toolbar__label navbar-text mr-3">Действия:</span>
+    <div
+      class="btn-group btn-group-sm"
+      role="group"
+      aria-label="Действия"
+    >
+      <button
+        class="btn btn-secondary toolbar__item toolbar__item--undo"
+        (click)="undo.emit()"
+      >Отменить</button>
+      <button
+        class="btn btn-secondary toolbar__item toolbar__item--redo"
+        (click)="redo.emit()"
+      >Вернуть</button>
+    </div>
+  </div>
+</div>

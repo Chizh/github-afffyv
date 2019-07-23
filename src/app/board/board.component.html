@@ -1,0 +1,15 @@
+<svg
+  class="board"
+  (dblclick)="onAdd($event)"
+>
+  <g
+    app-event-element
+    *ngFor="let flowElement of state"
+    [flowElement]="flowElement"
+
+    appDrag
+    [appDragData]="flowElement.id"
+    (appDragReleased)="onRelease($event)"
+  >
+  </g>
+</svg>

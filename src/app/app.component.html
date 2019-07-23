@@ -1,0 +1,16 @@
+<div class="main">
+  <div class="toolbar">
+    <app-toolbar
+      (addElement)="OnBoardEvent($event)"
+      (undo)="onUndo()"
+      (redo)="onRedo()"
+    ></app-toolbar>
+  </div>
+  <div class="board">
+    <app-board
+      [state]="flowElementStorage.Get()"
+      (eventBus)="OnBoardEvent($event)"
+    >
+    </app-board>
+  </div>
+</div>
