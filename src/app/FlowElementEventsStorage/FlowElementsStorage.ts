@@ -18,9 +18,9 @@ export class FlowElementsStorage
       });
   }
 
-  public Push(flowElement: IFlowElement): void {
+  public Push(option: { flowElement: IFlowElement }): void {
     this.flowElements
-      .push(flowElement);
+      .push(option.flowElement);
   }
 
   public Remove(option: { id: string; }): void {
