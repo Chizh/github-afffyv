@@ -5,6 +5,6 @@ export interface IFlowElementsStorage {
   Push(flowElement: IFlowElement): void;
   Remove(option: { id: string } ): void;
   Get(): IFlowElement[];
-  GetById(id: string): IFlowElement;
-  MoveTo(id: string, coords: ICoords): void;
+  GetById(option: { id: string; }): IFlowElement
+  MoveTo(option: { id: string, coords: ICoords }): void;
 }

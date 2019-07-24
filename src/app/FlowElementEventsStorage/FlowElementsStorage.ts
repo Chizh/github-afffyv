@@ -34,30 +34,30 @@ export class FlowElementsStorage
     return this.flowElements;
   }
 
-  public GetById(id: string): IFlowElement {
+  public GetById(option: { id: string; }): IFlowElement {
     return this.flowElements.find(
-      (el) => el.id === id
+      (el) => el.id === option.id
     );
   }
 
-  public MoveTo(id: string, coords: ICoords): void {
-    const flowNode: FlowNode = this.GetById(id) as FlowNode;
+  public MoveTo(option: {id: string, coords: ICoords}): void {
+    const flowNode: FlowNode = this.GetById({ id: option.id }) as FlowNode;
     const incomingArrows: SequenceFlow[] = (flowNode.incoming || []).map((seqFlowId) => {
-      return this.GetById(seqFlowId) as SequenceFlow;
+      return this.GetById({ id: seqFlowId }) as SequenceFlow;
     });
     const outgoingArrows: SequenceFlow[] = (flowNode.outgoing || []).map((seqFlowId) => {
-      return this.GetById(seqFlowId) as SequenceFlow;
+      return this.GetById({ id: seqFlowId }) as SequenceFlow;
     });
 
-    flowNode.x += coords.x;
-    flowNode.y += coords.y;
+    flowNode.x += option.coords.x;
+    flowNode.y += option.coords.y;
 
     incomingArrows.forEach((seqFlow) => {
       seqFlow.waypoints = seqFlow.waypoints.map((waypoint, index, source) => {
         if (index === (source.length - 1)) {
           return {
-            x: waypoint.x + coords.x,
-            y: waypoint.y + coords.y,
+            x: waypoint.x + option.coords.x,
+            y: waypoint.y + option.coords.y,
           };
         }
 
@@ -69,8 +69,8 @@ export class FlowElementsStorage
       seqFlow.waypoints = seqFlow.waypoints.map((waypoint, index) => {
         if (index === 0) {
           return {
-            x: waypoint.x + coords.x,
-            y: waypoint.y + coords.y,
+            x: waypoint.x + option.coords.x,
+            y: waypoint.y + option.coords.y,
           };
         }
 

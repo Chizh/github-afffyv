@@ -82,6 +82,9 @@ export class ApplicationCommandApplyingVisitor
 
   public VisitMove(moveCommand: MoveCommand): void {
     this.flowElementsStorage
-      .MoveTo(moveCommand.id, moveCommand.coords);
+      .MoveTo({
+          id: moveCommand.id,
+          coords: moveCommand.coords
+        });
   }
 }

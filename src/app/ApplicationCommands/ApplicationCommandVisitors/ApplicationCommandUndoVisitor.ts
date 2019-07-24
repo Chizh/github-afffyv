@@ -46,6 +46,9 @@ export class ApplicationCommandUndoVisitor
       y: -moveCommand.coords.y,
     };
 
-    this.flowElementsStorage.MoveTo(moveCommand.id, negativeCoords);
+    this.flowElementsStorage.MoveTo({
+      id: moveCommand.id, 
+      coords: negativeCoords
+    });
   }
 }
